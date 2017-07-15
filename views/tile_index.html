@@ -1,0 +1,55 @@
+
+<head>
+  <%include template/base.html%>
+<style>
+	body{
+		font-family:"微软雅黑"
+	}
+	a{
+		font-family:"微软雅黑"
+	}
+	div{
+		font-family:"微软雅黑"
+	}
+	span{
+			font-family:"微软雅黑"
+	}
+	input{
+			font-family:"微软雅黑"
+	}
+	h3{
+			font-family:"微软雅黑"
+	}
+	table{
+			font-family:"微软雅黑";
+			font-size:13px;
+	}
+	.content-wrapper {
+	  height:auto; 
+	  min-height: 500px;
+	}
+</style>
+</head>
+<body class="skin-green-light sidebar-mini" >
+	<style>
+		div.dataTables_filter {
+			text-align: right;
+			margin-top: -30px;
+		}
+	</style>
+	<script>
+		$(document).ready(function() {
+		
+        });
+		function changeFrameHeight(){
+            $("#map_frame").css("height",$(window).height()-195);
+        }
+	</script>
+    <div class="wrapper" >
+		 <%include template/nav.html%>
+		 <%include template/content_before.html%>
+		 <%include template/sidebar.html%>
+		<iframe id="map_frame" src="map.html" style="width: 100%;border:none;" onload="changeFrameHeight()"></iframe>
+		</div>
+		 <%include template/footer.html%>
+    </body>

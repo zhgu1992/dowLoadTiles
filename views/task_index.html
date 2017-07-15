@@ -1,0 +1,68 @@
+<%include template/base.html %>
+<body class="skin-green-light sidebar-mini">
+	<style>
+		div.dataTables_filter {
+			text-align: right;
+			margin-top: -30px;
+		}
+	</style>
+    <div class="wrapper">
+	<%include template/nav.html %>
+	<%include template/sidebar.html%>
+	<%include template/content_before.html %>
+        <table cellpadding="0" cellspacing="0" border="0" class="table table-bordered table-hover"
+           id="dataEditTable">
+        </table>
+
+        <div id="popupWindow"></div>
+
+    </div>
+        <%include template/footer.html %>
+    <script>
+        var modify_pre_url = "/api/task/searchAllTask";
+        var popup_window_id = "popupWindow";
+        var data_table_id = "dataEditTable";
+        var modify_name = "下载任务";
+        var showUse = true;
+        var edit_form_fieldsNameList = ["name", "project_name", "description"];
+        var edit_form_titleList = ["方案名称", "项目名称", "描述"];
+        var edit_form_styleList = ["text", "text","text"];
+        var edit_form_limitRuleList = [{isNotNull:true},{isNotNull:true}];
+       
+        var data_table_titleList = ["方案名称", "项目名称","创建时间","修改时间", "描述"];
+        var data_table_keyList = ["name", "project_name", "createtime","modifytime","description"];
+
+        
+        function edit_form_init_form_callback() {
+            //configMallTypeList();
+            var listInfo = [];
+            var tDict = {};
+            tDict.id =1;
+            tDict.text = "是";
+            listInfo.push(tDict);
+            var tDict1 = {};
+            tDict1.id = 0;
+            tDict1.text = "否";
+            listInfo.push(tDict1);
+            EDIT_FORM.setListInfo("is_indoor_nav", listInfo);
+        }
+        
+        function edit_form_added_data_callback() {//新增数据时
+        }
+        
+        function edit_form_edit_data_callback(fieldData) {//编辑数据时
+        }
+                
+
+        
+    </script>
+    <script type="text/javascript" src="javascripts/common_edit_form.js" charset="utf-8"></script>
+	<script type="text/javascript" src="javascripts/common_modify_table.js" charset="utf-8"></script>
+    <script type="text/javascript" src="javascripts/template_data_modify.js" charset="utf-8"></script>
+	<script type="text/javascript" src="javascripts/datatables/jquery.dataTables.js" charset="utf-8"></script>
+	<script type="text/javascript" src="javascripts/datatables/dataTables.bootstrap.js" charset="utf-8"></script>
+    <script type="text/javascript" src="javascripts/dateUtil.js" charset="utf-8"></script>
+	<script type="text/javascript" src="javascripts/bootstrap-dialog.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="javascripts/toastr.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="javascripts/jquery.form.js" charset="utf-8"></script>
+</body>

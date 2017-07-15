@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>测试</title>
+    <style type="text/css">
+	a{margin-left: 20px; text-decoration: none;}
+	a:hover{text-decoration: underline;}
+    </style>
+  </head>
+  <body>
+         <input type="button" id="download" value="download">
+  </body>
+  <script type="text/javascript" src="javascripts/jquery.min.js"></script>
+  <script>
+     var btn =document.getElementById("download");
+      btn.onclick= function(){
+			//var data = {dir:"E://test",fileArray:[{name:"20/21//0.jpg",type:1},{name:"20/22//0.jpg",type:1},{name:"20/22//1.jpg",type:1}]};
+			var data = {
+                dir : "E://test",
+                level : "20",
+                colmin :"779585",
+                colmax :"779585",
+                rowmin :"381848",
+                rowmax :"381950",
+                type:"google"
+            }
+         $.ajax({ 
+				url:'/fileService/getFilesByMap',
+				type:'post',
+				data: data,
+				success: function(data,status){
+                 if (data.code=="s_ok"){
+                     setTimeout(function() {
+                          var url = data.url;
+                         var iframe = document.getElementById("myIframe");
+                        if(iframe){
+                            iframe.src = url;
+                        }else{
+                            iframe = document.createElement("iframe");
+                            iframe.style.display = "none";
+                            iframe.src = url;
+                            iframe.id = "myIframe";
+                            document.body.appendChild(iframe);
+                        }
+                     }, 5000);
+					}
+				},
+				error: function(data,status){ 
+                 console.log(status);
+					console.log("下载失败");
+				}
+			});
+		
+  }
+  </script>
+</html>

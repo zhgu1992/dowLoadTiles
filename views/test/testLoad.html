@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>测试</title>
+    <style type="text/css">
+	a{margin-left: 20px; text-decoration: none;}
+	a:hover{text-decoration: underline;}
+    </style>
+  </head>
+  <body>
+         <input type="button" id="load" value="load">
+          <input type="text" id="message" value="message">
+  </body>
+  <script type="text/javascript" src="../javascripts/jquery.min.js"></script>
+  <script>
+     var btn =document.getElementById("load");
+      btn.onclick= function(){
+				var data = {
+                dir : "E://test",
+                level : "20",
+                colmin :"779585",
+                colmax :"779585",
+                rowmin :"381848",
+                rowmax :"381880",
+                type:"google"
+            };
+			$.ajax({ 
+				url:'/fileService/getFilesByMap',
+				type:'post',
+				data: data,
+				success: function(data,status){ 
+					if(status == 'success'){
+                    console.log(data)
+					}
+				},
+				error: function(data,status){ 
+					if(status == 'error'){ 
+					alert("下载失败");
+					}
+				}
+			});
+		
+  }
+
+  </script>
+</html>

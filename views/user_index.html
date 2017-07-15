@@ -1,0 +1,40 @@
+<% include template/base.html %>
+
+<body class="skin-green-light sidebar-mini">
+    <div class="wrapper">
+	<% include template/nav.html %>
+	<% include template/sidebar.html %>
+	<% include template/content_before.html %>
+
+        <table cellpadding="0" cellspacing="0" border="0" class="table table-bordered table-hover"
+           id="dataEditTable">
+        </table>
+
+        <div id="popupWindow"></div>
+
+    </div>
+        {% include "footer.html" %}
+    <script>
+        
+        var modify_pre_url = BASE_URL+"/sysmanage/user";
+        var popup_window_id = "popupWindow";
+        var data_table_id = "dataEditTable";
+        var modify_name = "用户";
+        var edit_form_fieldsNameList = ["username", "realname", "password", "email", "mobile"];
+        var edit_form_titleList = ["用户名", "用户全名", "密码", "电子邮件", "手机"];
+        var edit_form_styleList = ["text", "text", "password", "text", "text"];
+        var edit_form_limitRuleList = [{isNotNull:true}, {isNotNull:true}, {isNotNull:true}, {isEmail:true}, {isMobile:true}]
+        var data_table_titleList = ["用户名", "用户全名", "电子邮件", "手机", "创建时间", "修改时间", "ID"];
+        var data_table_keyList = ["username", "realname", "email", "mobile", "createtime", "modifytime", "id"];
+    </script>
+    <script type="text/javascript" src="javascripts/common_edit_form.js" charset="utf-8"></script>
+    <script type="text/javascript" src="javascripts/common_modify_table.js" charset="utf-8"></script>
+	<script type="text/javascript" src="javascripts/template_data_modify.js" charset="utf-8"></script>
+	<script type="text/javascript" src="javascripts/datatables/jquery.dataTables.js" charset="utf-8"></script>
+	<script type="text/javascript" src="javascripts/bootstrap-dialog.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="javascripts/toastr.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="javascripts/jquery.form.js" charset="utf-8"></script>
+
+	<script type="text/javascript" src="javascripts/datatables/dataTables.bootstrap.js" charset="utf-8"></script>
+    <script type="text/javascript" src="javascripts/dateUtil.js" charset="utf-8"></script>
+</body>
